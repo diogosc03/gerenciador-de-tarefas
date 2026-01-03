@@ -41,13 +41,25 @@ function App() {
     setTasks(newTasks);
   }
 
+  function onDeleteClick(taskId) {
+    const newTasks = tasks.filter((task) => {
+      if (task.id !== taskId) return task;
+    });
+
+    setTasks(newTasks);
+  }
+
   return (
     <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
       <div className="w-125">
         <h1 className="text-3xl text-slate-100 font-bold text-center">
           Gerenciar Tarefas
         </h1>
-        <Tasks tasks={tasks} onTaskClick={onTaskClick} />
+        <Tasks
+          tasks={tasks}
+          onTaskClick={onTaskClick}
+          onDeleteClick={onDeleteClick}
+        />
       </div>
     </div>
   );
